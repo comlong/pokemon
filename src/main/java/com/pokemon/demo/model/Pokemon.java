@@ -1,6 +1,5 @@
 package com.pokemon.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.opencsv.bean.CsvBindByName;
 
@@ -76,6 +75,7 @@ public class Pokemon {
     public Long getId() {
         return id;
     }
+
     @JsonSetter("#")
     public void setId(Long id) {
         this.id = id;
@@ -84,6 +84,7 @@ public class Pokemon {
     public String getName() {
         return name;
     }
+
     @JsonSetter("Name")
     public void setName(String name) {
         this.name = name;
@@ -92,6 +93,7 @@ public class Pokemon {
     public String getType1() {
         return type1;
     }
+
     @JsonSetter("Type 1")
     public void setType1(String type1) {
         this.type1 = type1;
@@ -100,6 +102,7 @@ public class Pokemon {
     public String getType2() {
         return type2;
     }
+
     @JsonSetter("Type 2")
     public void setType2(String type2) {
         this.type2 = type2;
@@ -108,6 +111,7 @@ public class Pokemon {
     public int getTotal() {
         return total;
     }
+
     @JsonSetter("Total")
     public void setTotal(int total) {
         this.total = total;
@@ -116,6 +120,7 @@ public class Pokemon {
     public int getHP() {
         return HP;
     }
+
     @JsonSetter("HP")
     public void setHP(int HP) {
         this.HP = HP;
@@ -124,6 +129,7 @@ public class Pokemon {
     public int getAttack() {
         return attack;
     }
+
     @JsonSetter("Attack")
     public void setAttack(int attack) {
         this.attack = attack;
@@ -132,6 +138,7 @@ public class Pokemon {
     public int getDefense() {
         return defense;
     }
+
     @JsonSetter("Defense")
     public void setDefense(int defense) {
         this.defense = defense;
@@ -140,6 +147,7 @@ public class Pokemon {
     public int getSpAtk() {
         return spAtk;
     }
+
     @JsonSetter("Sp. Atk")
     public void setSpAtk(int spAtk) {
         this.spAtk = spAtk;
@@ -148,6 +156,7 @@ public class Pokemon {
     public int getSpDef() {
         return spDef;
     }
+
     @JsonSetter("Sp. Def")
     public void setSpDef(int spDef) {
         this.spDef = spDef;
@@ -156,6 +165,7 @@ public class Pokemon {
     public int getSpeed() {
         return speed;
     }
+
     @JsonSetter("Speed")
     public void setSpeed(int speed) {
         this.speed = speed;
@@ -164,6 +174,7 @@ public class Pokemon {
     public int getGeneration() {
         return generation;
     }
+
     @JsonSetter("Generation")
     public void setGeneration(int generation) {
         this.generation = generation;
@@ -172,6 +183,7 @@ public class Pokemon {
     public boolean isLegendary() {
         return legendary;
     }
+
     @JsonSetter("Legendary")
     public void setLegendary(boolean legendary) {
         this.legendary = legendary;

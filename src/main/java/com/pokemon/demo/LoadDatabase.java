@@ -30,6 +30,7 @@ public class LoadDatabase {
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
     @Autowired
     private PokemonRepository pokemonRepository;
+
     @Bean
     CommandLineRunner initDatabase() {
         return args -> {
@@ -40,24 +41,25 @@ public class LoadDatabase {
 
             pokemons = pokemons.stream()
                     .filter(x -> x.isLegendary() == false)
-                    .filter(checkTypes("Ghost",false))
+                    .filter(checkTypes("Ghost", false))
                     .collect(Collectors.toList());
 
-            pokemons.stream().filter(checkTypes("Steel",true)).forEach(x -> x.setHP(2*x.getHP()));
+            pokemons.stream().filter(checkTypes("Steel", true)).forEach(x -> x.setHP(2 * x.getHP()));
             //Not sure Attack should be double or int
-            pokemons.stream().filter(checkTypes("Fire",true)).forEach(x ->x.setAttack(((int)Math.round(0.9*x.getAttack()))));
+            pokemons.stream().filter(checkTypes("Fire", true)).forEach(x -> x.setAttack(((int) Math.round(0.9 * x.getAttack()))));
             //For Pokémon of Type: Bug & Flying, increase their Attack Speed by 10%
-            pokemons.stream().filter(checkTypes("Bug",true).and(checkTypes("Flying",true))).forEach(x->x.setSpeed(((int)Math.round(1.1*x.getSpeed()))));
+            pokemons.stream().filter(checkTypes("Bug", true).and(checkTypes("Flying", true))).forEach(x -> x.setSpeed(((int) Math.round(1.1 * x.getSpeed()))));
             //For Pokémon that start with the letter G, add +5 Defense for every letter in their name (excluding G)
-            pokemons.stream().filter(x ->x.getName().startsWith("G")).forEach(x -> x.setDefense(x.getDefense()+ 5*(x.getName().length()-1)));
+            pokemons.stream().filter(x -> x.getName().startsWith("G")).forEach(x -> x.setDefense(x.getDefense() + 5 * (x.getName().length() - 1)));
 
 
             pokemonRepository.saveAll(pokemons);
             log.info("CSV data saved");
         };
     }
-    private Predicate<Pokemon> checkTypes(String type, Boolean include){
-        if(include == false)
+
+    private Predicate<Pokemon> checkTypes(String type, Boolean include) {
+        if (include == false)
             return p -> !p.getType1().equals(type) && !p.getType2().equals(type);
         else
             return p -> p.getType1().equals(type) || p.getType2().equals(type);
@@ -90,7 +92,8 @@ public class LoadDatabase {
 
     private List<Pokemon> jsonToPokemons(String filePath) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        List<Pokemon> pokemons = mapper.readValue(new URL("file:"+filePath), new TypeReference<List<Pokemon>>(){});
+        List<Pokemon> pokemons = mapper.readValue(new URL("file:" + filePath), new TypeReference<List<Pokemon>>() {
+        });
         return pokemons;
     }
 }

@@ -1,28 +1,13 @@
 package com.pokemon.demo.service;
 
 import com.pokemon.demo.model.Pokemon;
-import com.pokemon.demo.repository.PokemonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
-@Service
-public class PokemonService {
-    @Autowired
-    PokemonRepository pokemonRepository;
+public interface PokemonService {
+    List<Pokemon> getAllPokemon();
 
-    public List<Pokemon> getAllPokemon() {
-        List<Pokemon> pokemons = new ArrayList<Pokemon>();
-        pokemonRepository.findAll().forEach(pokemon -> pokemons.add(pokemon));
-        return pokemons;
-    }
-
-    public Pokemon getPokemonById(int id)
-    {
-        return pokemonRepository.findById(id).get();
-    }
-
+    Page<Pokemon> findByCondition(Integer page, Integer size, Integer HPBegin, Integer HPEnd, Integer attackBegin, Integer attackEnd, Integer defenseBegin, Integer defenseEnd);
 }
