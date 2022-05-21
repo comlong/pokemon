@@ -34,7 +34,7 @@ public class LoadDatabase {
     @Bean
     CommandLineRunner initDatabase() {
         return args -> {
-            log.info("start loading CSV data ");
+            log.info("Start loading data ");
             List<Pokemon> pokemons = csvToPokemons("./Data/pokemon.csv");
             List<Pokemon> pokemonsJSON = jsonToPokemons("./Data/pokemon.json");
             pokemons.addAll(pokemonsJSON);
@@ -52,9 +52,8 @@ public class LoadDatabase {
             //For Pokémon that start with the letter G, add +5 Defense for every letter in their name (excluding G)
             pokemons.stream().filter(x -> x.getName().startsWith("G")).forEach(x -> x.setDefense(x.getDefense() + 5 * (x.getName().length() - 1)));
 
-
             pokemonRepository.saveAll(pokemons);
-            log.info("CSV data saved");
+            log.info("All data saved");
         };
     }
 
