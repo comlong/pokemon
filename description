@@ -1,0 +1,7 @@
+Created all project by Java Spring Boot, and Maven
+1. Run the application by PokemonApplication
+2. CSV and Json data would be loaded from LoadDatabase.java to local H2 database
+3. Two public api "pokemon" and "search"
+4. get all data http://localhost:8080/pokemon
+5. findByName http://localhost:8080/findByName?name=xatu
+6. Filter and page http://localhost:8080/search?HPBegin=0&HPEnd=103&attackBegin=0&attackEnd=100&defenseBegin=0&size=10
