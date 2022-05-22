@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface PokemonService {
     List<Pokemon> getAllPokemon();
-
+    List<Pokemon> findByName(String name);
     Page<Pokemon> findByCondition(Integer page, Integer size, Integer HPBegin, Integer HPEnd, Integer attackBegin, Integer attackEnd, Integer defenseBegin, Integer defenseEnd);
 }

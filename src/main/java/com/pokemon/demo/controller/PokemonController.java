@@ -23,6 +23,12 @@ public class PokemonController {
         return pokemonService.getAllPokemon();
     }
 
+    @GetMapping("/findByName")
+    private List<Pokemon> getPokemonByName(@RequestParam(value = "name",required = false) String name){
+        return pokemonService.findByName(name);
+    }
+
+
     @GetMapping("/search")
     @ResponseBody
     public Object findByCondition(@RequestParam(value = "page", defaultValue = "0") Integer page,

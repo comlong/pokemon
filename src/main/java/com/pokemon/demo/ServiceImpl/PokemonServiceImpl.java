@@ -24,6 +24,11 @@ public class PokemonServiceImpl implements PokemonService {
     }
 
     @Override
+    public List<Pokemon> findByName(String name) {
+        return pokemonRepository.findByNameContainingIgnoreCase(name);
+    }
+
+    @Override
     public Page<Pokemon> findByCondition(Integer page, Integer size, Integer HPBegin, Integer HPEnd, Integer attackBegin, Integer attackEnd, Integer defenseBegin, Integer defenseEnd) {
 
         Pageable pageable = PageRequest.of(page, size);
